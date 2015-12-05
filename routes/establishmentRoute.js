@@ -13,12 +13,15 @@ var isAuthenticated = function (req, res, next) {
     res.redirect('/');
 }
 
-router.get('/',auth.basicAuth, establishmentController.findAll);
+module.exports = function(passport) {
 
-router.post('/signup', passport.authenticate('signup', {
-    successRedirect: '/home',
-    failureRedirect: '/signup',
-    failureFlash : true
-}));
+//router.get('/',auth.basicAuth, establishmentController.findAll);
 
-module.exports = router;
+    router.post('/signup', passport.authenticate('signup', {
+        successRedirect: '/home',
+        failureRedirect: '/signup',
+        failureFlash: true
+    }));
+
+    module.exports = router;
+}

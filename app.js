@@ -16,7 +16,7 @@ app.use(favicon());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
 app.use(cookieParser());
-app.use(passport.initialize());
+
 
 var passport = require('passport');
 var expressSession = require('express-session');
@@ -25,7 +25,7 @@ app.use(expressSession({secret: 'mySecretKey'}));
 app.use(passport.initialize());
 app.use(passport.session());
 
-var initPassport = require('./passport/init');
+var initPassport = require('./authentication/basicAuthEstablishment');
 initPassport(passport);
 
 var flash = require('connect-flash');
